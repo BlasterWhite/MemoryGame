@@ -5,13 +5,7 @@ var matchNumber = 0;
 var moves = 0;
 var playable = true;
 
-var cardsi = [
-    ['🍒', '👓', '🎱', '🦺', '🐘', '🐳'],
-    ['🍓', '🐅', '🐳', '🥁', '🐅', '🍇'],
-    ['🍓', '♟', '⚽️', '🍒', '🏈', '🏈'],
-    ['🦺', '🎱', '⚽️', '👓', '🍇', '💡'],
-    ['💡', '🧻', '🐘', '♟', '🧻', '🥁']
-];
+var cards = ['🍒', '👓', '🎱', '🦺', '🐘', '🐳', '🍓', '🐅', '🐳', '🥁', '🐅', '🍇', '🍓', '♟', '⚽️', '🍒', '🏈', '🏈', '🦺', '🎱', '⚽️', '👓', '🍇', '💡', '💡', '🧻', '🐘', '♟', '🧻', '🥁'];
 
 //Shuffle the Array Below
 function shuffleArray(array) {
@@ -22,13 +16,10 @@ function shuffleArray(array) {
 };
 
 function setCardsValue(caseDisplay) {
-    var coords = caseDisplay.toString().split('');
-    console.log(coords);
-    document.getElementById(caseDisplay).innerHTML = cardsi[coords[0]-1][coords[1]-1];
+    document.getElementById(caseDisplay).innerHTML = cards[parseInt(caseDisplay)-1];
 };
 
 function choice(caseChoice) {
-
     //is the card hidden ?
     if(document.getElementById(caseChoice).innerHTML == '?' && playable == true){
         setCardsValue(caseChoice);
@@ -36,22 +27,23 @@ function choice(caseChoice) {
             card1 = caseChoice;
         } else {
             card2 = caseChoice;
+            //Moves played
             moves++;
-            console.log(document.getElementById(card1).innerHTML + ' AND ' + document.getElementById(card2).innerHTML);
+            //console.log(document.getElementById(card1).innerHTML + ' AND ' + document.getElementById(card2).innerHTML);
             if(document.getElementById(card1).innerHTML == document.getElementById(card2).innerHTML){
                 // Match !
                 matchNumber++;
-                console.log('WIN');
+                //console.log('WIN');
                 card1 = '';
                 card2 = '';
                 if(matchNumber == 15){
-                    console.log("THE GAME IS FINISH");
+                    //console.log("THE GAME IS FINISH");
                     won();
                 }
             } else {
                 playable = false
                 // No match
-                console.log('NOP');
+                //console.log('NOP');
                 setTimeout(function() {
                     document.getElementById(card1).innerHTML = '?';
                     document.getElementById(card2).innerHTML = '?';
@@ -67,7 +59,7 @@ function choice(caseChoice) {
 };
 
 function won() {
-    document.getElementById('win').style.visibility = 'initial'
+    document.getElementById('win').style.visibility = 'initial';
     document.getElementById('moves').innerText = 'You made it in ' + moves + ' moves !';
 };
 
@@ -77,8 +69,10 @@ function restart() {
     matchNumber = 0;
     moves = 0;
     playable = true;
-    shuffleArray(cardsi)
+    shuffleArray(cards)
+    document.getElementById('win').style.visibility = 'hidden';
+    for (let i = 0; i < 30; i++) {
+        document.getElementById(i+1).innerHTML = '?'
+    }
 }
-
-
-shuffleArray(cardsi);
+shuffleArray(cards);

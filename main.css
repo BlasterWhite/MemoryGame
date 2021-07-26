@@ -24,13 +24,31 @@ th:hover {
 }
 
 div#win {
-    background: red;
+    background: rgb(0, 153, 255);
     width: 60%;
-    height: 250px;
+    height: 200px;
     text-align: center;
     position: absolute;
-    top: 250px;
+    top: 305px;
     left: 20%;
     border-radius: 25px;
     visibility: hidden;
+}
+
+div#win button {
+    padding: 15px;
+    width: 60%;
+    font-size: 25px;
+    color: #FFFFFF;
+    background: rgb(15, 0, 219);
+    border: rgb(15, 0, 219) 1px solid;
+    border-radius: 15px;
+}
+
+
+div#win button:hover {
+    color: #FFFFFF;
+    background: rgb(8, 0, 114);
+    border: rgb(8, 0, 114) 1px solid;
+    border-radius: 5px;
 }
