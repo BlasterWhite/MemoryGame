@@ -52,3 +52,39 @@ div#win button:hover {
     border: rgb(8, 0, 114) 1px solid;
     border-radius: 5px;
 }
+
+@media only screen and (max-width: 1050px) {
+
+    table {
+        margin: 0 auto;
+        color: black;
+        border-spacing: 15px;
+    }
+    
+    th {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    div#win {
+        width: 80%;
+        height: 190px;
+        top: 150px;
+        left: 10%;
+    }
+    
+    div#win button {
+        font-size: 18px;
+    }
+  }
+
+  
+@media only screen and (max-width: 442px) {    
+    div#win {
+        width: 80%;
+        height: 230px;
+        top: 150px;
+        left: 10%;
+    }
+  }
